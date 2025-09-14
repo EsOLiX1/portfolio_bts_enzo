@@ -1,11 +1,11 @@
-// Initialisation Firebase avec compat (idem, éviter de répéter si possible)
+// Initialisation Firebase avec compat (ne pas répéter dans plusieurs fichiers si possible)
 const firebaseConfig = {
   apiKey: "AIzaSyACJfw0IB60qtgEY1fLNJL_SVFfePFL204",
   authDomain: "portfolio-enzo.firebaseapp.com",
   projectId: "portfolio-enzo",
   storageBucket: "portfolio-enzo.appspot.com",
   messagingSenderId: "532349695077",
-  appId: "1:532349695077:web:def54289d501428c",
+  appId: "1:532349695077:web:def54289f03174d501428c"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -13,7 +13,8 @@ const db = firebase.firestore();
 
 const collectionName = "articles_reseaux";
 
-function afficherArticle(article) {
+// Fonction affichage article avec bouton "Modifier"
+function afficherArticle(article, id) {
   const articlesContainer = document.getElementById("articlesList");
   const articleElem = document.createElement("article");
   articleElem.classList.add("article-flex");
@@ -23,6 +24,7 @@ function afficherArticle(article) {
     <div class="article-content">
       <h3><a href="${article.url}" target="_blank" rel="noopener">${article.title}</a></h3>
       <p>${article.description}</p>
+      <button class="button-ajouter btn-modifier" data-id="${id}">✏️</button>
     </div>
   `;
 
@@ -31,19 +33,26 @@ function afficherArticle(article) {
   } else {
     articlesContainer.appendChild(articleElem);
   }
+
+  // Événement bouton modifier
+  articleElem.querySelector(".btn-modifier").addEventListener("click", () => {
+    modifierArticle(id);
+  });
 }
 
+// Charger tous les articles
 async function chargerArticles() {
   try {
     const querySnapshot = await db.collection(collectionName).get();
     querySnapshot.forEach((doc) => {
-      afficherArticle(doc.data());
+      afficherArticle(doc.data(), doc.id);
     });
   } catch (error) {
     console.error("Erreur chargement articles :", error);
   }
 }
 
+// Ajouter un article
 async function ajouterArticle() {
   // Auth simple par prompt
   const login = prompt("Identifiant ?");
@@ -77,7 +86,7 @@ async function ajouterArticle() {
     const info = data.data;
 
     const nouvelArticle = {
-      imgSrc: info.image?.url || "img/5G.png",
+      imgSrc: info.image?.url || "img/DeepSeek.png",
       imgAlt: info.title || "Image article",
       url: info.url,
       title: info.title || "Titre non disponible",
@@ -87,7 +96,7 @@ async function ajouterArticle() {
     const docRef = await db.collection(collectionName).add(nouvelArticle);
     console.log("Article ajouté avec ID : ", docRef.id);
 
-    afficherArticle(nouvelArticle);
+    afficherArticle(nouvelArticle, docRef.id);
 
   } catch (err) {
     console.error(err);
@@ -95,6 +104,54 @@ async function ajouterArticle() {
   }
 }
 
+// Modifier un article spécifique
+async function modifierArticle(id) {
+  // Auth simple par prompt
+  const login = prompt("Identifiant ?");
+  if (login !== "AdminEnzo") {
+    alert("Identifiant incorrect. Modification annulée.");
+    return;
+  }
+  const password = prompt("Mot de passe ?");
+  if (password !== "Enzo040906!") {
+    alert("Mot de passe incorrect. Modification annulée.");
+    return;
+  }
+
+  try {
+    const docRef = db.collection(collectionName).doc(id);
+    const docSnap = await docRef.get();
+
+    if (!docSnap.exists) {
+      alert("Article introuvable.");
+      return;
+    }
+
+    const article = docSnap.data();
+
+    // Demander modification de chaque champ
+    const newTitle = prompt("Modifier le titre :", article.title) || article.title;
+    const newDesc = prompt("Modifier la description :", article.description) || article.description;
+    const newImg = prompt("Modifier l'URL de l'image :", article.imgSrc) || article.imgSrc;
+    const newAlt = prompt("Modifier le texte alternatif de l'image :", article.imgAlt) || article.imgAlt;
+    const newUrl = prompt("Modifier l'URL de l'article :", article.url) || article.url;
+
+    await docRef.update({
+      title: newTitle,
+      description: newDesc,
+      imgSrc: newImg,
+      imgAlt: newAlt,
+      url: newUrl
+    });
+
+    alert("Article mis à jour !");
+    window.location.reload(); // recharge la page pour mettre à jour l'affichage
+  } catch (error) {
+    console.error("Erreur lors de la modification :", error);
+  }
+}
+
+// Écouteurs d'événements
 document.getElementById("addRssBtn").addEventListener("click", ajouterArticle);
 
 window.addEventListener("load", () => {
