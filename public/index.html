@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio Enzo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="top-banner">
+    <a href="index.html">Portfolio de Enzo</a>
+  </div>
+
+  <header>
+    <nav>
+      <ul class="main-menu">
+        <li class="dropdown">
+          <a href="#">E5 ↓</a>
+          <ul class="dropdown-menu" aria-label="Sous menu E5">
+            <li><a href="stage1.html">Description de stage 1</a></li>
+            <li><a href="stage2.html">Description de stage 2</a></li>
+            <li>
+              <a href="AP.html">AP →</a>
+              <ul class="submenu" aria-label="AP fichiers">
+                <li><a href="AP.html#ap1-1">AP1-1</a></li>
+                <li><a href="AP.html#ap1-2">AP1-2</a></li>
+                <li><a href="AP.html#ap1-3">AP1-3</a></li>
+                <li><a href="AP.html#ap1-4">AP1-4</a></li>
+                <li><a href="AP.html#ap2-1">AP2-1</a></li>
+                <li><a href="AP.html#ap2-2">AP2-2</a></li>
+                <li><a href="AP.html#memo-cisco">Mémo Cisco</a></li>
+              </ul>
+            </li>
+            <li><a href="synthese.html">Tableau de synthèse</a></li>
+            <li>
+              <a href="AP.html">Veilles documentaires →</a>
+              <ul class="submenu" aria-label="Veilles documentaires">
+                <li><a href="cybersecurite.html">Cybersécurité</a></li>
+                <li><a href="reseaux.html">5G / 6G</a></li>
+                <li><a href="outils.html">Outils</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">E6 ↓</a>
+          <ul class="dropdown-menu" aria-label="Sous menu E6">
+            <li>
+              <a href="AP.html">AP →</a>
+              <ul class="submenu" aria-label="AP fichiers">
+                <li><a href="AP.html#ap1-1">AP1-1</a></li>
+                <li><a href="AP.html#ap1-2">AP1-2</a></li>
+                <li><a href="AP.html#ap1-3">AP1-3</a></li>
+                <li><a href="AP.html#ap1-4">AP1-4</a></li>
+                <li><a href="AP.html#ap2-1">AP2-1</a></li>
+                <li><a href="AP.html#ap2-2">AP2-2</a></li>
+                <li><a href="AP.html#memo-cisco">Mémo Cisco</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="conduites.html">Guide de bonnes conduites</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <div class="banner parallax-bg reveal-on-scroll">
+    <div class="reveal-on-scroll" style="text-align:center">
+      Bienvenue sur mon portfolio
+      <div style="margin-top:18px">
+        <a href="#portfolio" class="button-ajouter pulse-gradient" style="text-decoration:none; font-size:.9rem;">Voir mes projets</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="about" class="reveal-on-scroll">
+      <h2>À propos</h2>
+      <p class="reveal-on-scroll">Bonjour, je suis Enzo AZALBERT, actuellement étudiant en en seconde année de BTS SIO (services informatiques aux
+organisations) option SISR (Solutions d’Infrastructure, Systèmes et Réseaux), l’
+accent est mis sur la mise en œuvre et la sécurisation des infrastructures informatiques.
+Cette formation me permet de développer des compétences en :
+<br>
+→ Administration et supervision de réseaux et serveurs (Windows, Linux).
+<br>
+→ Gestion et sécurisation des systèmes informatiques.
+<br>
+→ Mise en place de solutions de virtualisation et de services réseaux.
+<br>
+→ Maintenance, support technique et continuité de service.
+<br>
+→ Initiation à la cybersécurité et gestion des incidents.
+</p>
+    </section>
+
+    <section id="portfolio" class="reveal-on-scroll">
+      <h2>Portfolio</h2>
+      <div class="portfolio-grid reveal-on-scroll">
+
+        <a href="stage1.html" class="portfolio-item">
+          <img src="imgstage1/Accueil Logiciel/FEN_Accueil.png" alt="FEN_Accueil" />
+          <h3>Projet 1 : Alizée SMS</h3>
+        </a>
+
+        <a href="projets/projet2.html" class="portfolio-item">
+          <img src="img/avenir.png" alt="avenir" />
+          <h3>Projet 2</h3>
+        </a>
+
+        <a href="projets/projet3.html" class="portfolio-item">
+          <img src="img/avenir.png" alt="avenir" />
+          <h3>Projet 3</h3>
+        </a>
+
+      </div>
+    </section>
+
+    <section id="stats" class="reveal-on-scroll" style="margin-top:50px; display:grid; gap:30px; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+      <div class="reveal-on-scroll" style="background:linear-gradient(160deg,#1c1c29,#1a1a26 55%,#242437); padding:18px 20px; border:1px solid rgba(255,255,255,0.05); border-radius:14px; text-align:center;">
+        <span data-count="2" style="font-size:2.2rem; font-weight:700; display:block;">0</span>
+        <small style="letter-spacing:.5px; color:var(--color-text-soft);">Années BTS</small>
+      </div>
+      <div class="reveal-on-scroll" style="background:linear-gradient(160deg,#1c1c29,#1a1a26 55%,#242437); padding:18px 20px; border:1px solid rgba(255,255,255,0.05); border-radius:14px; text-align:center;">
+        <span data-count="25" style="font-size:2.2rem; font-weight:700; display:block;">0</span>
+        <small style="letter-spacing:.5px; color:var(--color-text-soft);">Captures projet</small>
+      </div>
+      <div class="reveal-on-scroll" style="background:linear-gradient(160deg,#1c1c29,#1a1a26 55%,#242437); padding:18px 20px; border:1px solid rgba(255,255,255,0.05); border-radius:14px; text-align:center;">
+        <span data-count="100" style="font-size:2.2rem; font-weight:700; display:block;">0</span>
+        <small style="letter-spacing:.5px; color:var(--color-text-soft);">Heures stage+</small>
+      </div>
+      <div class="reveal-on-scroll" style="background:linear-gradient(160deg,#1c1c29,#1a1a26 55%,#242437); padding:18px 20px; border:1px solid rgba(255,255,255,0.05); border-radius:14px; text-align:center;">
+        <span data-count="15" style="font-size:2.2rem; font-weight:700; display:block;">0</span>
+        <small style="letter-spacing:.5px; color:var(--color-text-soft);">Fonctions WinDev</small>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal-on-scroll">
+      <h2>Contact</h2>
+      <p class="reveal-on-scroll">Contactez-moi en cliquant <a href="mailto:azalbertenzo@gmail.com">ici</a></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Enzo Portfolio. Tous droits réservés.
+  </footer>
+<!-- Firebase SDKs (compat version) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="index.js"></script>
+<script src="anim.js" defer></script>
+
+</body>
+
+</html>
